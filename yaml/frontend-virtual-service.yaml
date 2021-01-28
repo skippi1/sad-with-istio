@@ -9,8 +9,22 @@ spec:
   gateways:
   - frontend-gateway
   http:
+  - match:
+    - uri:
+        exact: "/get"
+    route:
+    - destination:
+        host: httpbin.default.svc.cluster.local
+        port:
+          number: 8000
   - route:
     - destination:
         host: frontend
         port:
           number: 80
+      weight: 50
+    - destination:
+        host: frontend-v2
+        port:
+          number: 80
+      weight: 50
