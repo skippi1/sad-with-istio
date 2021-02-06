@@ -1,0 +1,2 @@
+start minikube.exe tunnel --cleanup=true
+start minikube.exe service istio-ingressgateway -n istio-system
